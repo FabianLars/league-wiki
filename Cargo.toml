@@ -1,0 +1,37 @@
+[package]
+authors = ["FabianLars <fabianlars@fabianlars.de>"]
+edition = "2018"
+name = "league-wiki"
+publish = false
+version = "0.1.0"
+
+[features]
+default = ["riot-api"]
+riot-api = []
+
+[dependencies]
+#shared
+anyhow = "1.0"
+serde = {version = "1", features = ["derive"]}
+serde_json = {version = "1.0", features = ["preserve_order"]}
+tokio = {version = "1", features = ["fs", "io-util", "macros", "rt-multi-thread"]}
+# lib
+base64 = "0.13"
+chrono = {version = "0.4", default-features = false, features = ["std", "clock", "unstable-locales"]}
+futures-util = {version = "0.3", default-features = false}
+log = "0.4"
+mw-tools = {git = "https://github.com/FabianLars/mw-toolbox"}
+regex = "1.5"
+reqwest = {version = "0.11", features = ["json", "cookies"]}
+select = "0.5"
+#cli
+clap = "3.0.0-beta.4"
+pretty_env_logger = "0.4"
+sysinfo = {version = "0.20", default-features = false}
+
+#[lib]
+#name = "league"
+#path = "src/lib.rs"
+#[[bin]]
+#name = "cli"
+#path = "src/bin.rs"
