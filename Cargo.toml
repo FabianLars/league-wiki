@@ -3,7 +3,14 @@ authors = ["FabianLars <fabianlars@fabianlars.de>"]
 edition = "2018"
 name = "league-wiki"
 publish = false
+resolver = "2"
 version = "0.1.0"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
 
 [features]
 default = ["riot-api"]
