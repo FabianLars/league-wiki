@@ -642,7 +642,7 @@ dependencies = [
 [[package]]
 name = "mw-tools"
 version = "0.1.0"
-source = "git+https://github.com/FabianLars/mw-toolbox#c98f95e174b7eb3cd39584a3a812ab54d8efec28"
+source = "git+https://github.com/FabianLars/mw-toolbox#0d91cb7a2f144b63d0a635e5517479b3dc4e8be3"
 dependencies = [
  "directories-next",
  "futures-util",
