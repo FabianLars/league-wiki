@@ -27,12 +27,12 @@ base64 = "0.13"
 chrono = {version = "0.4", default-features = false, features = ["std", "clock", "unstable-locales"]}
 futures-util = {version = "0.3", default-features = false}
 log = "0.4"
-mw-tools = {git = "https://github.com/FabianLars/mw-toolbox"}
+mw-tools = {git = "https://github.com/FabianLars/mw-toolbox", rev = "3f7ad1747e0116a64a561bb8b78411e162aee88e"}
 regex = "1.5"
 reqwest = {version = "0.11", features = ["json", "cookies"]}
 select = "0.5"
 #cli
-clap = "3.0.0-beta.4"
+clap = "3.0.0-beta.5"
 pretty_env_logger = "0.4"
 sysinfo = {version = "0.20", default-features = false}
 

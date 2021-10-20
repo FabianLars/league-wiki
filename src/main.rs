@@ -3,11 +3,11 @@
 use std::path::PathBuf;
 
 use anyhow::{anyhow, Result};
-use clap::{ArgEnum, Clap};
+use clap::{ArgEnum, Parser};
 use league_wiki::{champs, discounts, positions, rotation, set};
 use mw_tools::Client;
 
-#[derive(ArgEnum, Debug, PartialEq)]
+#[derive(ArgEnum, Clone, Debug, PartialEq)]
 enum LeagueType {
     Champs,
     Champions,
@@ -19,7 +19,7 @@ enum LeagueType {
     Set,
 }
 
-#[derive(Clap, Debug, PartialEq)]
+#[derive(Parser, Debug, PartialEq)]
 struct Cli {
     #[clap(arg_enum)]
     command: LeagueType,
@@ -41,10 +41,8 @@ async fn main() -> Result<()> {
     pretty_env_logger::init();
 
     let cli = Cli::parse();
-    let mut client = Client::new()?
-        .with_url(&cli.url)
-        .with_credentials(&cli.name, &cli.password);
-    client.login().await?;
+    let mut client = Client::new(&cli.url)?;
+    client.login(&cli.name, &cli.password).await?;
     let client = client;
 
     match cli.command {
