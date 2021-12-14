@@ -59,9 +59,9 @@ async fn main() -> Result<()> {
 }
 
 fn get_client_path() -> Result<PathBuf> {
-    use sysinfo::{ProcessExt, RefreshKind, System, SystemExt};
+    use sysinfo::{ProcessExt, ProcessRefreshKind, RefreshKind, System, SystemExt};
 
-    let system = System::new_with_specifics(RefreshKind::new().with_processes());
+    let system = System::new_with_specifics(RefreshKind::new().with_processes(ProcessRefreshKind::everything()));
 
     let process = system.process_by_name("LeagueClient.exe");
 
