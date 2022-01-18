@@ -63,9 +63,9 @@ fn get_client_path() -> Result<PathBuf> {
 
     let system = System::new_with_specifics(RefreshKind::new().with_processes(ProcessRefreshKind::everything()));
 
-    let process = system.process_by_name("LeagueClient.exe");
+    let mut processes = system.processes_by_name("LeagueClient.exe");
 
-    if let Some(p) = process.get(0) {
+    if let Some(p) = processes.next() {
         if let Some(path) = p.exe().parent() {
             let mut path = path.to_path_buf();
             path.push("lockfile");
