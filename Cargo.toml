@@ -28,7 +28,7 @@ chrono = {version = "0.4", default-features = false, features = ["std", "clock",
 futures-util = {version = "0.3", default-features = false}
 log = "0.4"
 mw-tools = {git = "https://github.com/FabianLars/mw-toolbox", rev = "0efd2054999cf3b781d3e047b2ad17308e0745db"}
-regex = "1.5"
+regex = "1.6"
 reqwest = {version = "0.11", features = ["json", "cookies"]}
 select = "0.5"
 #cli
