@@ -20,7 +20,7 @@ riot-api = []
 #shared
 anyhow = "1.0"
 serde = {version = "1", features = ["derive"]}
-serde_json = {version = "1.0", features = ["preserve_order"]}
+serde_json = {version = "1", features = ["preserve_order"]}
 tokio = {version = "1", features = ["fs", "io-util", "macros", "rt-multi-thread"]}
 # lib
 base64 = "0.13"
@@ -28,11 +28,11 @@ chrono = {version = "0.4", default-features = false, features = ["std", "clock",
 futures-util = {version = "0.3", default-features = false}
 log = "0.4"
 mw-tools = {git = "https://github.com/FabianLars/mw-toolbox", rev = "0efd2054999cf3b781d3e047b2ad17308e0745db"}
-regex = "1.6"
+regex = "1"
 reqwest = {version = "0.11", features = ["json", "cookies"]}
 select = "0.5"
 #cli
-clap = {version = "3.2", features = ["derive", "env"]}
+clap = {version = "4", features = ["derive", "env"]}
 pretty_env_logger = "0.4"
 sysinfo = {version = "0.26", default-features = false}
 
