@@ -30,7 +30,7 @@ log = "0.4"
 mw-tools = {git = "https://github.com/FabianLars/mw-toolbox", rev = "0efd2054999cf3b781d3e047b2ad17308e0745db"}
 regex = "1"
 reqwest = {version = "0.11", features = ["json", "cookies"]}
-select = "0.5"
+select = "0.6"
 #cli
 clap = {version = "4", features = ["derive", "env"]}
 pretty_env_logger = "0.4"
