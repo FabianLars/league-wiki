@@ -3,6 +3,7 @@
 use std::{collections::HashMap, path::PathBuf};
 
 use anyhow::{anyhow, Error, Result};
+use base64::prelude::*;
 use futures_util::future::join;
 use regex::Regex;
 use reqwest::header::{HeaderMap, ACCEPT, AUTHORIZATION};
@@ -161,7 +162,7 @@ pub async fn discounts<C: AsRef<Client>>(client: C, path: PathBuf) -> Result<()>
     // 0: "LeagueClient", 1: PID, 2: Port, 3: Auth, 4: Protocol
     let contents = lockfile.split(':').collect::<Vec<_>>();
     let port = contents[2];
-    let auth = base64::encode(format!("riot:{}", contents[3]).as_bytes());
+    let auth = BASE64_STANDARD.encode(format!("riot:{}", contents[3]).as_bytes());
     let mut headers = HeaderMap::new();
     headers.insert(ACCEPT, "application/json".parse()?);
     headers.insert(AUTHORIZATION, format!("Basic {}", auth).parse()?);

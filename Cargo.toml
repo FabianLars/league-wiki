@@ -23,7 +23,7 @@ serde = {version = "1", features = ["derive"]}
 serde_json = {version = "1", features = ["preserve_order"]}
 tokio = {version = "1", features = ["fs", "io-util", "macros", "rt-multi-thread"]}
 # lib
-base64 = "0.20"
+base64 = "0.21"
 chrono = {version = "0.4", default-features = false, features = ["std", "clock", "unstable-locales"]}
 futures-util = {version = "0.3", default-features = false}
 log = "0.4"
