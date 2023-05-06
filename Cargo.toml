@@ -34,7 +34,7 @@ select = "0.6"
 #cli
 clap = {version = "4", features = ["derive", "env"]}
 pretty_env_logger = "0.4"
-sysinfo = {version = "0.28", default-features = false}
+sysinfo = {version = "0.29", default-features = false}
 
 #[lib]
 #name = "league"
