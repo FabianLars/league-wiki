@@ -411,14 +411,12 @@ pub async fn rotation<C: AsRef<Client>>(client: C) -> Result<()> {
     let sql = format!(
         "INSERT INTO rotations(start_date, end_date, champions) VALUES ('{}', '{}', ARRAY[{}]) ON CONFLICT DO NOTHING;",
         chrono::Utc::now()
-            .format_localized("%Y-%m-%d", chrono::Locale::de_DE)
-            .to_string(),
+            .format_localized("%Y-%m-%d", chrono::Locale::de_DE),
         std::ops::Add::add(chrono::Utc::now(), chrono::Duration::days(7))
-            .format_localized("%Y-%m-%d", chrono::Locale::de_DE)
-            .to_string(),
+            .format_localized("%Y-%m-%d", chrono::Locale::de_DE),
         rotation
             .iter()
-            .map(|x| format!("'{}'", x.replace("'", "''")))
+            .map(|x| format!("'{}'", x.replace('\'', "''")))
             .collect::<Vec<String>>()
             .join(",")
     );
@@ -462,15 +460,15 @@ pub async fn set<C: AsRef<Client>>(client: C) -> Result<()> {
         format!("return {}", lua)
     };
 
-    let skin = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/skins.json").send().await?.text().await?.replace(" ", " ").replace("Hexerei-Miss Fortune \"", "Hexerei-Miss Fortune\"");
+    let skin = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/skins.json").send().await?.text().await?.replace(' ', " ").replace("Hexerei-Miss Fortune \"", "Hexerei-Miss Fortune\"");
 
-    let set = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/skinlines.json").send().await?.text().await?.replace(" ", " ");
+    let set = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/skinlines.json").send().await?.text().await?.replace(' ', " ");
 
-    let universe = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/universes.json").send().await?.text().await?.replace(" ", " ");
+    let universe = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/universes.json").send().await?.text().await?.replace(' ', " ");
 
-    let icons = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/summoner-icons.json").send().await?.text().await?.replace(" ", " ");
+    let icons = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/summoner-icons.json").send().await?.text().await?.replace(' ', " ");
 
-    let iconsets = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/summoner-icon-sets.json").send().await?.text().await?.replace(" ", " ");
+    let iconsets = ext_client.get("https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/de_de/v1/summoner-icon-sets.json").send().await?.text().await?.replace(' ', " ");
 
     let patches: Vec<String> = ext_client
         .get("https://ddragon.leagueoflegends.com/api/versions.json")
@@ -487,7 +485,7 @@ pub async fn set<C: AsRef<Client>>(client: C) -> Result<()> {
         .await?
         .text()
         .await?
-        .replace(" ", " ");
+        .replace(' ', " ");
 
     let tft = ext_client
         .get("http://raw.communitydragon.org/latest/cdragon/tft/de_de.json")
@@ -496,7 +494,7 @@ pub async fn set<C: AsRef<Client>>(client: C) -> Result<()> {
         .expect("Can't get universes.json")
         .text()
         .await?
-        .replace(" ", " ");
+        .replace(' ', " ");
 
     let _ = client
         .post::<Ignore>(&[
