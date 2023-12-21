@@ -59,7 +59,7 @@ async fn main() -> Result<()> {
 }
 
 fn get_client_path() -> Result<PathBuf> {
-    use sysinfo::{ProcessExt, ProcessRefreshKind, RefreshKind, System, SystemExt};
+    use sysinfo::{ProcessRefreshKind, RefreshKind, System};
 
     let system = System::new_with_specifics(
         RefreshKind::new().with_processes(ProcessRefreshKind::everything()),
@@ -68,7 +68,7 @@ fn get_client_path() -> Result<PathBuf> {
     let mut processes = system.processes_by_name("LeagueClient.exe");
 
     if let Some(p) = processes.next() {
-        if let Some(path) = p.exe().parent() {
+        if let Some(path) = p.exe().and_then(|p| p.parent()) {
             let mut path = path.to_path_buf();
             path.push("lockfile");
             return Ok(path);
