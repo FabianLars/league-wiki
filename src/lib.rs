@@ -337,7 +337,7 @@ pub async fn rotation<C: AsRef<Client>>(client: C) -> Result<()> {
         &std::env::var("RIOT_API_KEY")?
     );
 
-    let curr_date = chrono::Utc::today()
+    let curr_date = chrono::Utc::now()
         .format_localized("%-d. %B %Y", chrono::Locale::de_DE)
         .to_string();
 
@@ -410,10 +410,10 @@ pub async fn rotation<C: AsRef<Client>>(client: C) -> Result<()> {
 
     let sql = format!(
         "INSERT INTO rotations(start_date, end_date, champions) VALUES ('{}', '{}', ARRAY[{}]) ON CONFLICT DO NOTHING;",
-        chrono::Utc::today()
+        chrono::Utc::now()
             .format_localized("%Y-%m-%d", chrono::Locale::de_DE)
             .to_string(),
-        std::ops::Add::add(chrono::Utc::today(), chrono::Duration::days(7))
+        std::ops::Add::add(chrono::Utc::now(), chrono::Duration::days(7))
             .format_localized("%Y-%m-%d", chrono::Locale::de_DE)
             .to_string(),
         rotation
